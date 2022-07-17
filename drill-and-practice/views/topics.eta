@@ -1,0 +1,49 @@
+<% layout("./layouts/layout.eta") %>
+
+<a href="/">Back to main page</a>
+
+<h1>Topics</h1>
+
+
+<% if (it.topics && it.topics.length > 0) { %> 
+
+<ul class="list-group">
+<% it.topics.forEach( (topic) => { %>
+    <li class="list-group-item">
+    <a href="topics/<%= topic.id %>"><%= topic.name %></a>
+    <% if (it.admin) { %> 
+    <form class="mt-1" method="POST" action="/topics/<%= topic.id %>/delete">
+    <input class="btn btn-danger btn-sm" type="submit" value="Delete">
+    </form>
+    <% } %>
+    </li>
+<% });%>
+</ul>
+
+<% } else { %>
+
+<p>No topics yet.</p>
+
+<% } %>
+
+<% if (it.admin) { %> 
+
+<h2 class="mt-2">Add a topic</h2>
+
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li style="color: red;"><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<form class="form-group" method="POST" action="/topics">
+<label for="name">Name: </label>
+<input class="form-control" id="name" type="text" name="name" value="<%= it.name ? it.name : "" %>"><br>
+<input class="btn btn-primary" type="submit" value="Add"/>
+</form>
+
+<% } %>

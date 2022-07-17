@@ -1,0 +1,17 @@
+<% layout('./layouts/layout.eta') %>
+
+
+<h1>Rehearsal application</h1>
+
+<p>This is an application for rehearsing different topics in the form of quizzes. New questions can be created by anyone, but adding new topics requires admin access. For adding new questions click "topics" and for rehearsing click "quizzes".</p>
+
+
+<h2>Statistics</h2>
+<p>Number of topics: <%= it.topicAmount %></p>
+<p>Number of questions: <%= it.questionAmount %></p>
+<p>Number of answers: <%= it.answerAmount %></p>
+
+<div class="d-flex justify-content-star">
+    <a href="/auth/login" class="btn btn-primary mr-2">Login</a><br/>
+    <a href="/auth/register" class="btn btn-primary ml-2">Register</a><br/>
+</div>

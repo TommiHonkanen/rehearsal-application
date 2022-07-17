@@ -1,0 +1,7 @@
+<% layout("./layouts/layout.eta") %>
+
+<a href="/quiz">Back to topics</a>
+
+<h1 class="text-success" style="font-size: 75px;">Correct!</h1>
+
+<a class="btn btn-primary mt-2" href="/quiz/<%= it.topicId %>">Next question</a>

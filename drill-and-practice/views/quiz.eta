@@ -1,0 +1,26 @@
+<% layout("./layouts/layout.eta") %>
+
+<a href="/">Back to main page</a>
+
+<h1>Quiz topics</h1>
+
+<% if (it.error) { %>
+
+<ul>
+    <li style="color: red;"><%= it.error %></li>
+</ul>
+<% } %>
+
+<% if (it.topics && it.topics.length > 0) { %> 
+
+<ul class="list-group">
+<% it.topics.forEach( (topic) => { %>
+    <li class="list-group-item"><a href="quiz/<%= topic.id %>"><%= topic.name %></a></li>
+<% });%>
+</ul>
+
+<% } else { %>
+
+<p>No topics yet.</p>
+
+<% } %>

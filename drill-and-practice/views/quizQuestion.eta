@@ -1,0 +1,32 @@
+<% layout("./layouts/layout.eta") %>
+
+<a href="/quiz">Back to topics</a>
+
+<% if (it.error) { %> 
+    <p class="mt-2"><%= it.error %></p>
+<% } else { %>
+
+<h1>Question: <%= it.name %></h1>
+
+<% if (it.options && it.options.length > 0) { %> 
+
+<ul class="list-group">
+<% it.options.forEach( (option) => { %>
+    <li class="list-group-item">
+    <%= option.option_text %>
+    <form class="mt-1" method="POST" action="/quiz/<%= it.topicId %>/questions/<%= it.questionId %>/options/<%= option.id %>">
+    <input class="btn btn-success btn-sm" type="submit" value="Choose">
+    </form>
+    </li>
+<% });%>
+</ul>
+
+<% } else { %>
+
+<p>No answer options for this question yet.</p>
+
+<a class="btn btn-primary" href="/quiz/<%= it.topicId %>">Next question</a>
+
+<% } %>
+
+<% } %>

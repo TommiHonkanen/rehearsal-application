@@ -1,0 +1,37 @@
+<% layout("./layouts/layout.eta") %>
+
+<a href="/topics">Back to topics</a>
+
+<h1>Questions for: <%= it.name %></h1>
+
+<% if (it.questions && it.questions.length > 0) { %> 
+
+<ul class="list-group">
+<% it.questions.forEach( (question) => { %>
+    <li class="list-group-item"><a href="/topics/<%= question.topic_id %>/questions/<%= question.id %>"><%= question.question_text %></a></li>
+<% });%>
+</ul>
+
+<% } else { %>
+
+<p>None available.</p>
+
+<% } %>
+
+<h2 class="mt-2">Add a question</h2>
+
+<% if (it.validationErrors) { %>
+<ul>
+    <% Object.keys(it.validationErrors).forEach((attribute) => { %>
+        <% Object.values(it.validationErrors[attribute]).forEach((err) => { %>
+            <li style="color: red;"><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>
+
+<form class="form-group" method="POST" action="/topics/<%= it.topicId %>/questions">
+<label for="question">Question: </label>
+<input class="form-control" id="question" type="textarea" name="question_text" value="<%= it.question_text ? it.question_text : "" %>"><br>
+<input class="btn btn-primary" type="submit" value="Add"/>
+</form>
