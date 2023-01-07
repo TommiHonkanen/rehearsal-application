@@ -1,4 +1,4 @@
-Rehearsal application
+# Rehearsal application
 
 ## Description
 
