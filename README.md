@@ -1,4 +1,4 @@
-# Project 2: Rehearsal application
+Rehearsal application
 
 ## Description
 
@@ -17,7 +17,7 @@ The app can be found behind
 ## Running the app locally
 
 The app can be run locally by opening a terminal in the folder that contains the
-app and typing `docker-compose up` and then navigating to the address
+app and typing `docker-compose up` (requires docker) and then navigating to the address
 [localhost:7777/](http://localhost:7777/) in the browser.
 
 ## Running the tests
